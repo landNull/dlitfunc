@@ -110,3 +110,10 @@ Append a new line under the correct heading:
 ```
 
 If the fact changes an existing one, replace the old line. Do not leave both.
+
+## Navigation and course
+
+[2026-11-03] Navigation state (trail, last position, bookmarks, progress) MUST live in the XDG config home, one small file per concern, never inside the content repo.
+[2026-11-03] The trail MUST push the position the reader leaves; `back` MUST pop it and return to the exact position; the trail MUST survive restarts.
+[2026-11-03] A course is a manifest in the docs satellite plus a progress file in the config home; `continue` opens the first unfinished item; `done` records completion.
+[2026-11-03] Badges are minimal plain JSON (id, name, criteria, earned date). Open Badges 3.0 is a migration path only; no certification, no xAPI, no SCORM, no service.

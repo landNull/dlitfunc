@@ -84,3 +84,18 @@ This page is the single source of truth. Add a new standard here. Do not copy a 
 Append one short phrase under the correct heading. Do not copy the phrase into another file. Link to this page instead.
 
 See [standards-standalone.md](standards-standalone.md) for the page applications link to.
+
+## Navigation and course
+
+An application with a docs satellite MUST support side-quest-and-return navigation and course reading.
+
+- The application MUST keep a per-app navigation trail in the XDG config home (`~/.config/<app>/`). Navigation state MUST NOT be stored in the content repository.
+- The application MUST push the position the reader leaves onto the trail when the reader opens a deeper page.
+- The trail MUST persist across restarts as a small plain-text file, one position per line.
+- The application MUST provide a `back` verb that pops the most recent trail entry and returns the reader to that exact position (page, and heading when the pager supports it).
+- The application MUST provide a `trail` verb that lists the current stack.
+- The application MUST provide a `bookmark` verb with `save <name>`, `open <name>`, and `list`. Bookmarks MUST persist in the XDG config home as a small plain-text file.
+- The application MUST provide course management: a manifest in the docs satellite declaring tutorial order, a progress file in the XDG config home, a `continue` verb that opens the first unfinished course item, and a `done` verb that records completion.
+- Course completion MAY award a badge. A badge MUST be a small plain file in the XDG config home containing at least: id, name, criteria, earned date.
+- Open Badges 3.0 is a documented migration path only. The application MUST NOT implement badge certification, verification services, xAPI, or SCORM machinery.
+- Navigation and course features MUST NOT require a running service.
